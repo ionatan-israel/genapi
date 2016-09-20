@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+
+const _exit = process.exit
+const bluebird = require('bluebird')
+const copydir = require('copy-dir')
+const copyfy = bluebird.promisify(copydir)
+const pkg = require('../package.json')
+const program = require('commander')
+
+program
+  .version(pkg.version)
+  .usage('[options] [dir]')
+  .parse(process.argv)
+
+const apiName = program.args[0]
+const destinationPath = program.args.shift() || './' + apiName
+
+const main = () => {
+  if (apiName === undefined) {
+    console.log('Se require un nombre para el API')
+    exit(1)
+  }
+  copyfy('./boilerplate/', destinationPath)
+  .then(console.log(' Create Dirs : ok!'))
+  .catch((err) => console.log(err))
+}
+
+main()
+
+const exit = (code) => {
+  // flush output for Node.js Windows pipe bug
+  // https://github.com/joyent/node/issues/6247 is just one bug example
+  // https://github.com/visionmedia/mocha/issues/333 has a good discussion
+  const done = () => {
+    if (!(draining--)) _exit(code)
+  }
+  let draining = 0
+  let streams = [process.stdout, process.stderr]
+  exit.exited = true
+  streams.forEach((stream) => {
+    // submit empty write request and wait for completion
+    draining += 1
+    stream.write('', done)
+  })
+  done()
+}
+
+// const buildDirs = (array) =>
+//   bluebird.each(array, (dirName) => {
+//     copyfy('./templates/src' + dirName, destinationPath + dirName)
+//     .then(console.log(' Create : ' + dirName))
+//     .catch((err) => console.log(err))
+//   })
+// buildDirs(['controllers', 'helpers', 'middlewares', 'models'])

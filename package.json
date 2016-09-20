@@ -1,0 +1,26 @@
+{
+  "name": "api-generator",
+  "description": "Express' API generator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "api",
+    "rest",
+    "app",
+    "restful"
+  ],
+  "author": "Jonatan Rodriguez <jrperdomoz@gmail.com>",
+  "contributors": [
+    "Angel Calderaro <calderaro94@gmail.com>"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "mkdirp": "^0.5.1",
+    "sorted-object": "^2.0.1"
+  }
+}
