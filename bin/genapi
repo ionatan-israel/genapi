@@ -4,6 +4,7 @@ const _exit = process.exit
 const bluebird = require('bluebird')
 const copydir = require('copy-dir')
 const copyfy = bluebird.promisify(copydir)
+const path = require('path')
 const pkg = require('../package.json')
 const program = require('commander')
 
@@ -20,7 +21,7 @@ const main = () => {
     console.log('Se require un nombre para el API')
     exit(1)
   } else {
-    copyfy('./boilerplate/', destinationPath)
+    copyfy(path.join(__dirname, '..', 'boilerplate'), destinationPath)
     .then(console.log(' Create Dirs : ok!'))
     .catch((err) => console.log(err))
   }
