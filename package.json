@@ -19,7 +19,9 @@
   ],
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.4.6",
     "commander": "^2.9.0",
+    "copy-dir": "^0.3.0",
     "mkdirp": "^0.5.1",
     "sorted-object": "^2.0.1"
   }
