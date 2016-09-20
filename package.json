@@ -35,7 +35,7 @@
   ],
   "license": "MIT",
   "main": "bin/genapi",
-  "name": "genapi",
+  "name": "generator-express-api",
   "preferGlobal": true,
   "repository": {
     "type": "git",
