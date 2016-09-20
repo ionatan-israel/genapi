@@ -1,8 +1,20 @@
 {
-  "name": "api-generator",
+  "name": "generator-api",
   "description": "Express' API generator",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "bin/genapi",
+  "preferGlobal": true,
+  "bin": {
+    "genapi": "./bin/genapi"
+  },
+  "engines": {
+    "node": ">= 0.10"
+  },
+  "files": [
+    "LICENSE",
+    "bin/",
+    "boilerplate/"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +29,7 @@
   "contributors": [
     "Angel Calderaro <calderaro94@gmail.com>"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "bluebird": "^3.4.6",
     "commander": "^2.9.0",
