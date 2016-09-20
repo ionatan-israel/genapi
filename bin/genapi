@@ -7,6 +7,7 @@ const copyfy = bluebird.promisify(copydir)
 const path = require('path')
 const pkg = require('../package.json')
 const program = require('commander')
+const replace = require('replace')
 
 program
   .version(pkg.version)
@@ -22,7 +23,16 @@ const main = () => {
     exit(1)
   } else {
     copyfy(path.join(__dirname, '..', 'boilerplate'), destinationPath)
-    .then(console.log(' Create Dirs : ok!'))
+    .then(() => {
+      console.log(' Create Dirs : ok!')
+      replace({
+        regex: '{apiName}',
+        replace: apiName,
+        paths: [destinationPath],
+        recursive: true,
+        silent: true
+      })
+    })
     .catch((err) => console.log(err))
   }
 }
