@@ -1,12 +1,22 @@
 {
-  "name": "generator-api",
-  "description": "Express' API generator",
-  "version": "1.0.0",
-  "main": "bin/genapi",
-  "preferGlobal": true,
+  "author": "Jonatan Rodriguez <jrperdomoz@gmail.com>",
   "bin": {
     "genapi": "./bin/genapi"
   },
+  "bugs": {
+    "url": "https://github.com/jrperdomoz/generator-api/issues"
+  },
+  "contributors": [
+    "Angel Calderaro <calderaro94@gmail.com>"
+  ],
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "commander": "^2.9.0",
+    "copy-dir": "^0.3.0",
+    "mkdirp": "^0.5.1",
+    "sorted-object": "^2.0.1"
+  },
+  "description": "Express' API generator",
   "engines": {
     "node": ">= 0.10"
   },
@@ -15,9 +25,7 @@
     "bin/",
     "boilerplate/"
   ],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "homepage": "https://github.com/jrperdomoz/generator-api#readme",
   "keywords": [
     "express",
     "api",
@@ -25,16 +33,16 @@
     "app",
     "restful"
   ],
-  "author": "Jonatan Rodriguez <jrperdomoz@gmail.com>",
-  "contributors": [
-    "Angel Calderaro <calderaro94@gmail.com>"
-  ],
   "license": "MIT",
-  "dependencies": {
-    "bluebird": "^3.4.6",
-    "commander": "^2.9.0",
-    "copy-dir": "^0.3.0",
-    "mkdirp": "^0.5.1",
-    "sorted-object": "^2.0.1"
-  }
+  "main": "bin/genapi",
+  "name": "generator-api",
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrperdomoz/generator-api.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
 }
