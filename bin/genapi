@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-const _exit = process.exit
 const bluebird = require('bluebird')
 const copydir = require('copy-dir')
 const copyfy = bluebird.promisify(copydir)
@@ -20,14 +19,13 @@ const destinationPath = program.args.shift() || './' + apiName
 const main = () => {
   if (apiName === undefined) {
     console.log('Se require un nombre para el API')
-    exit(1)
   } else {
     copyfy(path.join(__dirname, '..', 'boilerplate'), destinationPath)
     .then(() => {
       console.log(' Create Dirs : ok!')
       replace({
         regex: '{apiName}',
-        replace: apiName,
+        replacement: apiName,
         paths: [destinationPath],
         recursive: true,
         silent: true
@@ -38,24 +36,6 @@ const main = () => {
 }
 
 main()
-
-function exit (code) {
-  // flush output for Node.js Windows pipe bug
-  // https://github.com/joyent/node/issues/6247 is just one bug example
-  // https://github.com/visionmedia/mocha/issues/333 has a good discussion
-  function done () {
-    if (!(draining--)) _exit(code)
-  }
-  const streams = [process.stdout, process.stderr]
-  let draining = 0
-  exit.exited = true
-  streams.forEach(function (stream) {
-    // submit empty write request and wait for completion
-    draining += 1
-    stream.write('', done)
-  })
-  done()
-}
 
 // const buildDirs = (array) =>
 //   bluebird.each(array, (dirName) => {
